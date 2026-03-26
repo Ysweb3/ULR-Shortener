@@ -108,6 +108,6 @@ const result = await fetch('/shorten', {
   })
 })
 const data = await result.json()
-shortCode.textContent = data.shortCode
+shortCode.textContent = shortCode.textContent = `https://ulr-shortener.onrender.com/${data.shortCode}`
 })
 
