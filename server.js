@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+app.use(express.static('public'))
 
 const shortUrlRouter = require('./routes/shorten');
 app.use('/shorten', shortUrlRouter);

@@ -27,11 +27,11 @@ router.post('/', async(req, res) => {
         shortCode: code,
         }
     })
-    console.log("code: " + code);
+    // console.log("code: " + code);
     res.send(result);
     }
     else{
-      res.status(404).send('URL not valid');
+      res.status(400).send('URL not valid');
     }
 });
 
