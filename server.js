@@ -13,6 +13,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.render('index');
 });
+app.get('/analytics', (req, res) => {
+    res.render('analytics');
+});
 app.use(express.static('public'))
 
 const shortUrlRouter = require('./routes/shorten');
@@ -20,11 +23,16 @@ app.use('/shorten', shortUrlRouter);
 
 app.get('/:code', async(req, res) => {
     console.log(req.params.code);
-    const url = await prisma.url.findUnique({
+    const url = await prisma.url.findUnique({   
         where: {
         shortCode: req.params.code
     }
+    
   })
+//   const update = await prisma.url.update({
+//         where: { shortCode: req.params.code },
+//         data: { clicks: { increment: 1 } }
+// })
   if(!url){
     res.status(404).send('URL not found');
     console.log('URL not found '+req.params.code);
@@ -32,7 +40,7 @@ app.get('/:code', async(req, res) => {
   }
   else{
       res.redirect(url.longUrl);
-
+      
   }
 
 });

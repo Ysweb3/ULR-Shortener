@@ -42,15 +42,14 @@
 <body class="kinetic-bg min-h-screen flex flex-col relative"><canvas class="fixed inset-0 w-full h-full -z-10 pointer-events-none" id="grid-canvas"></canvas>
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-[#121214]/80 backdrop-blur-md border-b border-white/5">
-<nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<nav class="flex justify-between items-center px-6 py-4 w-full">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" data-icon="link">link</span>
 <span class="text-lg font-bold tracking-tight text-on-surface">LinkKinetic</span>
 </div>
 <div class="hidden md:flex gap-8 items-center">
 <a class="text-primary text-sm font-medium" href="#">Home</a>
-<a class="text-on-surface-variant text-sm font-medium hover:text-on-surface transition-colors" href="#">Analytics</a>
-<a class="text-on-surface-variant text-sm font-medium hover:text-on-surface transition-colors" href="#">Developer</a>
+<a class="text-on-surface-variant text-sm font-medium hover:text-on-surface transition-colors" href="/analytics">Analytics</a>
 </div>
 <div class="flex items-center">
 <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded border border-primary/20 uppercase tracking-widest">Beta</span>
@@ -106,7 +105,7 @@
 </main>
 <!-- Footer -->
 <footer class="w-full py-6 border-t border-white/5 bg-[#0e0e10]">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 space-y-6 md:space-y-0 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 space-y-6 md:space-y-0 max-auto mx-auto">
 <div class="flex flex-col md:flex-row items-center gap-4">
 <span class="text-on-surface font-semibold text-sm">LinkKinetic</span>
 </div>
@@ -134,5 +133,6 @@
 </div>
 </div>
 <script src="script.js" defer></script>
+<script src="design.js" defer></script>
 </body>
 </html>
