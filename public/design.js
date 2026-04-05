@@ -13,7 +13,7 @@ function init() {
     dots = [];
     for (let x = spacing / 2; x < width; x += spacing) {
         for (let y = spacing / 2; y < height; y += spacing) {
-            dots.push({ x, y, baseRadius: 1 });
+            dots.push({ x, y, baseRadius: 1.8 });
         }
     }
 }
@@ -45,25 +45,11 @@ function animate() {
         }
 
         ctx.beginPath();
-        const angle = Math.atan2(dy, dx)
-        const lineLength = 25;
-        // draw a line
-        ctx.save()
-        ctx.translate(dot.x, dot.y)
-        ctx.rotate(angle*90)
-        ctx.beginPath()
-        ctx.moveTo(-lineLength / 2, 0)
-        ctx.lineTo(lineLength / 2, 0)
-        ctx.strokeStyle = color
-        ctx.globalAlpha = opacity
-        ctx.lineWidth = 1.5
-        ctx.stroke()
-        ctx.restore()
+        ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
         ctx.fillStyle = color;
         ctx.globalAlpha = opacity;
         ctx.fill();
     });
-    
     requestAnimationFrame(animate);
 }
 

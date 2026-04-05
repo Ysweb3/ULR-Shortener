@@ -38,7 +38,7 @@
 const longUrlForm = document.getElementById('long-url-form')
 const longUrl = document.getElementById('long-url')
 const shortCode = document.getElementById('short-code')
-console.log(longUrl.value)
+
 longUrlForm.addEventListener('submit',async(e)=>{
     e.preventDefault()
 const result = await fetch('/shorten', {
