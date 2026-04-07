@@ -1,12 +1,10 @@
 
-   const form = document.querySelector('form');
+  const form = document.querySelector('form');
   const aliasContainer = document.getElementById('alias-container');
   const toast = document.getElementById('toast-notification');
   const toastProgress = document.getElementById('toast-progress');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
+  function showToast(){
     // Darken ALIAS background
     aliasContainer.classList.remove('bg-surface-container-high/50');
     aliasContainer.classList.add('bg-black/80');
@@ -34,23 +32,24 @@
       aliasContainer.classList.add('bg-surface-container-high/50');
       aliasContainer.classList.remove('bg-black/80');
     }, 3000);
-  });
+}
 const longUrlForm = document.getElementById('long-url-form')
 const longUrl = document.getElementById('long-url')
 const shortCode = document.getElementById('short-code')
 
 longUrlForm.addEventListener('submit',async(e)=>{
     e.preventDefault()
-const result = await fetch('/shorten', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    longUrl: longUrl.value
+    const result = await fetch('/shorten', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        longUrl: longUrl.value
+      })
+    })
+    const data = await result.json()
+    shortCode.textContent = shortCode.textContent = `https://ulr-shortener.onrender.com/${data.shortCode}`
+    showToast()
   })
-})
-const data = await result.json()
-shortCode.textContent = shortCode.textContent = `https://ulr-shortener.onrender.com/${data.shortCode}`
-})
 

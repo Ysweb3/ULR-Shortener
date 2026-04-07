@@ -21,21 +21,19 @@ app.use(express.static('public'))
 const shortUrlRouter = require('./routes/shorten');
 app.use('/shorten', shortUrlRouter);
 
-    app.get('/analytics/:code',async(req,res)=>{
-        const totalClicks = await prisma.url.findUnique({
-                where: { shortCode: req.params.code },
-            });
-            res.json(totalClicks);
-    })
-    //TODO add the fontend display with date too
+app.get('/analytics/:code',async(req,res)=>{
+    const totalClicks = await prisma.url.findUnique({
+    where: { shortCode: req.params.code },
+    });
+    res.json(totalClicks);
+})
 app.get('/:code', async(req, res) => {
     console.log(req.params.code);
     const url = await prisma.url.findUnique({   
         where: {
         shortCode: req.params.code
     }
-    
-  })
+})
   if(!url){
     res.status(404).send('URL not found');
     console.log('URL not found '+req.params.code);

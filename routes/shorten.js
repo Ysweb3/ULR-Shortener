@@ -15,11 +15,16 @@ function isValidUrl(string){
 }
 
 
-
 router.post('/', async(req, res) => {
     const code = nanoid(6);
-   
-    console.log("longUrl: " + req.body.longUrl);
+
+  const ulrExists = await prisma.url.findUnique({
+    where:{ longUrl: req.body.longUrl }
+  })
+    if(ulrExists != null){
+      res.send(ulrExists)
+      return;
+    }
     if(isValidUrl(req.body.longUrl)){
       const result = await prisma.url.create({
         data: {
@@ -27,8 +32,12 @@ router.post('/', async(req, res) => {
         shortCode: code,
         }
     })
-    // console.log("code: " + code);
     res.send(result);
+    } 
+    else if(await ulrExists(req.body.longUrl) !== null){
+      res.status(400).send('URL already exists');
+      console.log("RAAAAAAAAAA")
+      return;
     }
     else{
       res.status(400).send('URL not valid');

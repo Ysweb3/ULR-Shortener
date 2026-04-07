@@ -15,7 +15,7 @@ datasource db {
  
 model Url {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  longUrl    String
+  longUrl    String   @unique
   shortCode  String   @unique
   createdAt  DateTime @default(now())
   clicks     Int      @default(0)
