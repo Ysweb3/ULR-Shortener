@@ -36,7 +36,8 @@
 const longUrlForm = document.getElementById('long-url-form')
 const longUrl = document.getElementById('long-url')
 const shortCode = document.getElementById('short-code')
-
+const currentUrl = window.location.href;
+console.log(currentUrl)
 longUrlForm.addEventListener('submit',async(e)=>{
     e.preventDefault()
     const result = await fetch('/shorten', {
@@ -49,7 +50,7 @@ longUrlForm.addEventListener('submit',async(e)=>{
       })
     })
     const data = await result.json()
-    shortCode.textContent = shortCode.textContent = `https://ulr-shortener.onrender.com/${data.shortCode}`
+    shortCode.textContent = shortCode.textContent = currentUrl+data.shortCode
     showToast()
   })
 
